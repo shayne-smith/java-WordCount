@@ -29,10 +29,24 @@ public class Main {
 		List<HashMap.Entry> sortedArrayList = new ArrayList<>(wordCountHashMap.entrySet());
 		sortedArrayList.sort(Comparator.comparing(o -> (int)o.getValue(), Comparator.reverseOrder()));
 
+		Map<String, Integer> alphabeticalMap = new HashMap<>();
+
 		System.out.println("Top 50 words");
 		System.out.println();
 		for (int i = 0; i < 50; i++) {
 			System.out.println("Common Word <" + sortedArrayList.get(i).getKey() + "> occurs " + sortedArrayList.get(i).getValue() + " times");
+			alphabeticalMap.put(sortedArrayList.get(i).getKey().toString(), (int)sortedArrayList.get(i).getValue());
+		}
+
+		// sort Hashmap alphabetically
+		List<HashMap.Entry> alphabeticalList = new ArrayList<>(alphabeticalMap.entrySet());
+		alphabeticalList.sort(Comparator.comparing(o -> o.getKey().toString()));
+
+		System.out.println();
+		System.out.println("Top 50 words Alphabetically");
+		System.out.println();
+		for (int i = 0; i < 50; i++) {
+			System.out.println("Common Word <" + alphabeticalList.get(i).getKey() + "> occurs " + alphabeticalList.get(i).getValue() + " times");
 		}
 	}
 }
