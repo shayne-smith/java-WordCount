@@ -15,7 +15,7 @@ public class Main {
 
 		Map<String, Integer> wordCountHashMap = new HashMap<>();
 
-		for(String word : words) {
+		for(String word : words) { // iterates through each word in words array
 			if (word.isEmpty()) {
 				continue;
 			} else if (wordCountHashMap.containsKey(word)) {
@@ -30,6 +30,7 @@ public class Main {
 		sortedArrayList.sort(Comparator.comparing(o -> (int)o.getValue(), Comparator.reverseOrder()));
 
 		System.out.println("Top 50 words");
+		System.out.println();
 		for (int i = 0; i < 50; i++) {
 			System.out.println("Common Word <" + sortedArrayList.get(i).getKey() + "> occurs " + sortedArrayList.get(i).getValue() + " times");
 		}
