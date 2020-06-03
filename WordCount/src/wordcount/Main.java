@@ -13,7 +13,7 @@ public class Main {
 		// remove all remaining punctuation from the string and split string into uppercase words
 		String[] words = unText.replaceAll("\\p{Punct}", "").toUpperCase().split("\\s+");
 
-		System.out.println(Arrays.toString(words));
+		// System.out.println(Arrays.toString(words));
 
 		Map<String, Integer> wordCountHashMap = new HashMap<>();
 
@@ -27,9 +27,20 @@ public class Main {
 			}
 		}
 
-		for (Map.Entry<String, Integer> entry : wordCountHashMap.entrySet()) {
-			System.out.println("Common Word <" + entry.getKey() + "> occurs " + entry.getValue() + " times");
+		// for (Map.Entry<String, Integer> entry : wordCountHashMap.entrySet()) {
+		// 	System.out.println("Common Word <" + entry.getKey() + "> occurs " + entry.getValue() + " times");
+		// }
+
+		// sort Hashmap
+		List<HashMap.Entry> sortedArrayList = new ArrayList<>(wordCountHashMap.entrySet());
+		sortedArrayList.sort(Comparator.comparing(o -> (int)o.getValue(), Comparator.reverseOrder()));
+
+		System.out.println("Top 50 words");
+		for (int i = 0; i < 50; i++) {
+			System.out.println("Common Word <" + sortedArrayList.get(i).getKey() + "> occurs " + sortedArrayList.get(i).getValue() + " times");
 		}
+
+		// System.out.println(sortedArrayList);
 
 		// // print hashmap
   //      	System.out.println("\nPrinting HashMap");
